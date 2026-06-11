@@ -1,0 +1,12 @@
+:host {
+  flex: 1;
+}
+
+input {
+  width: 100%;
+  padding: 0.9rem 1.1rem;
+  font-size: 1.25rem;
+  border: 2px solid #d1d5db;
+  border-radius: 0.5rem;
+  font-family: inherit;
+}

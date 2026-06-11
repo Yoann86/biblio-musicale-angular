@@ -1,10 +1,20 @@
-<div class="grid">
-  @for (track of tracks(); track track.id) {
-    <app-track-card
-      [track]="track"
-      [active]="track.id === selectedId()"
-      (select)="selectedId.set($event.id)" />
-  } @empty {
-    <p>Aucun morceau.</p>
-  }
+<div class="track-list">
+  <div class="track-list-header">
+    <app-track-search (searched)="onSearch($event)" />
+    @if (auth.isLoggedIn()) {
+      <a routerLink="/tracks/new" class="btn-add">+ Ajouter</a>
+    }
+  </div>
+  <p class="hint">Clic droit sur un morceau pour voir ses détails.</p>
+  <div class="grid">
+    @for (track of tracks(); track track.id) {
+      <app-track-card
+        [track]="track"
+        [active]="track.id === selectedId()"
+        (select)="onSelect($event)"
+        (open)="onOpen($event)" />
+    } @empty {
+      <p>Aucun morceau.</p>
+    }
+  </div>
 </div>

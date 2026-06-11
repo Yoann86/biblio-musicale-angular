@@ -1,0 +1,81 @@
+<div class="form-wrapper">
+  <h2>{{ isEdit ? 'Modifier le morceau' : 'Ajouter un morceau' }}</h2>
+
+  <form novalidate (submit)="onSubmit($event)">
+    <div class="form-row">
+      <div class="field">
+        <label>Titre *</label>
+        <input [formField]="trackForm.title" placeholder="Blinding Lights" />
+        @if (trackForm.title().touched() && !trackForm.title().valid()) {
+          <small class="error">{{ trackForm.title().errors()[0]?.message }}</small>
+        }
+      </div>
+
+      <div class="field">
+        <label>Artiste *</label>
+        <input [formField]="trackForm.artist" placeholder="The Weeknd" />
+        @if (trackForm.artist().touched() && !trackForm.artist().valid()) {
+          <small class="error">{{ trackForm.artist().errors()[0]?.message }}</small>
+        }
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="field">
+        <label>Album</label>
+        <input [formField]="trackForm.album" placeholder="After Hours" />
+      </div>
+
+      <div class="field">
+        <label>Genre</label>
+        <input [formField]="trackForm.genre" placeholder="Synth-pop" />
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="field">
+        <label>Année</label>
+        <input type="number" [formField]="trackForm.year" />
+      </div>
+
+      <div class="field">
+        <label>Durée (secondes)</label>
+        <input type="number" [formField]="trackForm.durationSeconds" />
+      </div>
+
+      <div class="field">
+        <label>Note (0–10)</label>
+        <input type="number" [formField]="trackForm.rating" />
+        @if (trackForm.rating().touched() && !trackForm.rating().valid()) {
+          <small class="error">Note entre 0 et 10</small>
+        }
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="field">
+        <label>Cover URL</label>
+        <input [formField]="trackForm.coverUrl" placeholder="https://picsum.photos/…" />
+      </div>
+
+      <div class="field field-checkbox">
+        <label>
+          <input type="checkbox" [formField]="trackForm.favorite" />
+          Favori
+        </label>
+      </div>
+    </div>
+
+    @if (model().coverUrl) {
+      <img class="cover-preview" [src]="model().coverUrl" alt="preview" />
+    }
+
+    <div class="form-actions">
+      <a routerLink="/tracks" class="btn-cancel">Annuler</a>
+      @if (isEdit) {
+        <button type="button" class="btn-delete" (click)="onDelete()">Supprimer</button>
+      }
+      <button type="submit" [disabled]="!trackForm().valid()">Enregistrer</button>
+    </div>
+  </form>
+</div>

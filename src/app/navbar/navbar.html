@@ -1,0 +1,17 @@
+<nav>
+  <div class="nav-brand">
+    <a routerLink="/">🎵 CineTrack</a>
+  </div>
+
+  <div class="nav-links">
+    <a routerLink="/tracks" routerLinkActive="active">Catalogue</a>
+  </div>
+
+  <div class="nav-right">
+    @if (auth.isLoggedIn()) {
+      <button (click)="auth.logout()">Déconnexion</button>
+    } @else {
+      <a routerLink="/login" routerLinkActive="active">Connexion</a>
+    }
+  </div>
+</nav>

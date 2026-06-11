@@ -1,0 +1,19 @@
+<form class="login-form" (submit)="onSubmit($event)">
+  <h2>Connexion</h2>
+
+  <label>
+    Email
+    <input type="email" [value]="email()" (input)="email.set($any($event.target).value)" />
+  </label>
+
+  <label>
+    Mot de passe
+    <input type="password" [value]="password()" (input)="password.set($any($event.target).value)" />
+  </label>
+
+  @if (error()) {
+    <p class="error">{{ error() }}</p>
+  }
+
+  <button type="submit">Se connecter</button>
+</form>

@@ -1,0 +1,28 @@
+@if (track(); as t) {
+  <div class="detail">
+    <img [src]="t.coverUrl" [alt]="t.title" class="cover" />
+
+    <div class="info">
+      <h2>{{ t.title }}</h2>
+      <p class="artist">{{ t.artist }}</p>
+
+      <dl>
+        <dt>Album</dt>    <dd>{{ t.album || '—' }}</dd>
+        <dt>Genre</dt>    <dd>{{ t.genre || '—' }}</dd>
+        <dt>Année</dt>    <dd>{{ t.year }}</dd>
+        <dt>Durée</dt>    <dd>{{ t.durationSeconds | durationFormat }}</dd>
+        <dt>Note</dt>     <dd>{{ t.rating }} / 10</dd>
+        <dt>Favori</dt>   <dd>{{ t.favorite ? '❤️' : '—' }}</dd>
+      </dl>
+
+      @if (auth.isLoggedIn()) {
+        <div class="actions">
+          <a class="btn-edit" [routerLink]="['/tracks', t.id, 'edit']">Modifier</a>
+          <button class="btn-delete" (click)="onDelete()">Supprimer</button>
+        </div>
+      }
+    </div>
+  </div>
+} @else {
+  <p>Chargement…</p>
+}

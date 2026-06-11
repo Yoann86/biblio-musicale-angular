@@ -1,0 +1,69 @@
+nav {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  padding: 0 min(4rem, 10%);
+  height: 56px;
+  background-color: #212529;
+  color: #fff;
+  margin-bottom: 1.5rem;
+}
+
+.nav-brand a {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #fff;
+  text-decoration: none;
+}
+
+.nav-links {
+  display: flex;
+  gap: 1.5rem;
+  flex: 1;
+}
+
+.nav-right {
+  margin-left: auto;
+}
+
+a {
+  color: rgba(255, 255, 255, 0.75);
+  text-decoration: none;
+  font-size: 0.95rem;
+  transition: color 0.15s;
+}
+
+a:hover,
+a.active {
+  color: #fff;
+}
+
+button {
+  background: none;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  color: rgba(255, 255, 255, 0.75);
+  padding: 0.3rem 0.75rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.95rem;
+  font-family: inherit;
+  transition: color 0.15s, border-color 0.15s;
+}
+
+button:hover {
+  color: #fff;
+  border-color: #fff;
+}
+
+.nav-right a[routerLink="/login"] {
+  background: #fff;
+  color: #212529;
+  padding: 0.35rem 1rem;
+  border-radius: 4px;
+  font-weight: 500;
+  transition: background 0.15s;
+}
+
+.nav-right a[routerLink="/login"]:hover {
+  background: #e9ecef;
+}
