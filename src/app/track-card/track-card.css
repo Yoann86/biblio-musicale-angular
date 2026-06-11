@@ -7,6 +7,7 @@
   border-radius: 0.5rem;
   cursor: pointer;
   max-width: 300px;
+  position: relative;
   transition:
     border-color 120ms ease,
     box-shadow 120ms ease,
@@ -40,6 +41,23 @@
   margin: 0;
 }
  
+.favorite {
+  position: absolute;
+  top: 0.6rem;
+  right: 0.6rem;
+  font-size: 1.25rem;
+  line-height: 1;
+  background: rgba(255,255,255,0.85);
+  border-radius: 50%;
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  user-select: none;
+}
+
 .badge {
   width: fit-content;
   padding: 0.25rem 0.5rem;
@@ -48,4 +66,20 @@
   background: #dbeafe;
   font-size: 0.875rem;
   font-weight: 700;
+}
+
+.badge.gold {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.badge.muted {
+  background: #f3f4f6;
+  color: #6b7280;
+}
+
+.badge.playing {
+  position: absolute;
+  top: 0.6rem;
+  left: 0.6rem;
 }

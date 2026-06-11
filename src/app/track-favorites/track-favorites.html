@@ -1,0 +1,11 @@
+<div class="grid">
+    @for (track of tracks(); track track.id) {
+        <app-track-card
+            [favorite]="true"
+            [track]="track"
+            (toggleFavorite)="onRemoveFavorite(track.id)"
+        ></app-track-card>
+    } @empty {
+        <p>Aucun morceau.</p>
+    }
+</div>

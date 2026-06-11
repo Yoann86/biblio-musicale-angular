@@ -1,10 +1,13 @@
 <nav>
   <div class="nav-brand">
-    <a routerLink="/">🎵 CineTrack</a>
+    <a routerLink="/">CineTrack</a>
   </div>
 
   <div class="nav-links">
     <a routerLink="/tracks" routerLinkActive="active">Catalogue</a>
+      @if (features.favorites && auth.isLoggedIn()) {
+         <a routerLink="/favorites" routerLinkActive="active">Favoris</a>
+      }
   </div>
 
   <div class="nav-right">

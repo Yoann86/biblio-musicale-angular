@@ -7,6 +7,7 @@ import { environment } from '../../environements/environement';
 export class TrackService {
   private http = inject(HttpClient);
   private baseUrl = `${environment.apiUrl}/tracks`;
+  private favoriteUrl = `${environment.apiUrl}/favorites`;
 
   getTracks() {
     return this.http.get<Track[]>(this.baseUrl);
@@ -31,5 +32,17 @@ export class TrackService {
 
   remove(id: number) {
     return this.http.delete<void>(`${this.baseUrl}/${id}`);
+  }
+
+  getFavorites() {
+    return this.http.get<Track[]>(`${this.favoriteUrl}`);
+  }
+
+  addFavorite(id: number) {
+    return this.http.post<Track>(`${this.favoriteUrl}/${id}`, null);
+  }
+
+  removeFavorite(id: number) {
+    return this.http.delete<Track>(`${this.favoriteUrl}/${id}`);
   }
 }

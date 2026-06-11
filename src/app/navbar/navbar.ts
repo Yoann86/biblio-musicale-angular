@@ -1,6 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { AuthService } from '../services/auth-service';
+import { environment } from '../../environements/environement';
 
 @Component({
   selector: 'app-navbar',
@@ -10,4 +11,5 @@ import { AuthService } from '../services/auth-service';
 })
 export class Navbar {
   protected auth = inject(AuthService);
+  protected features = environment.features;
 }

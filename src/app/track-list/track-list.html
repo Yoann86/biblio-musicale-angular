@@ -12,7 +12,10 @@
         [track]="track"
         [active]="track.id === selectedId()"
         (select)="onSelect($event)"
-        (open)="onOpen($event)" />
+        (open)="onOpen($event)" 
+        (toggleFavorite)="onToggleFavorite($event)"
+        [favorite]="track.favorite"
+        />
     } @empty {
       <p>Aucun morceau.</p>
     }

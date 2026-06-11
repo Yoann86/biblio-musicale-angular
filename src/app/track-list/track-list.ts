@@ -4,6 +4,7 @@ import { TrackCard } from '../track-card/track-card';
 import { TrackSearch } from '../track-search/track-search';
 import { Track } from '../models/track';
 import { AuthService } from '../services/auth-service';
+import { TrackService } from '../services/track-service';
 
 @Component({
   selector: 'app-track-list',
@@ -15,6 +16,7 @@ export class TrackList {
   protected tracks = signal<Track[]>([]);
   protected selectedId = signal<number | null>(null);
   private router = inject(Router);
+  private service = inject(TrackService);
   protected auth = inject(AuthService);
 
   protected onSearch(results: Track[]) {
@@ -27,5 +29,18 @@ export class TrackList {
 
   protected onOpen(track: Track) {
     this.router.navigate(['/tracks', track.id]);
+  }
+
+  protected onToggleFavorite(track: Track) {
+    const call = track.favorite
+      ? this.service.removeFavorite(track.id)
+      : this.service.addFavorite(track.id);
+
+    call.subscribe({
+      next: (updated) => this.tracks.update(list =>
+        list.map(t => t.id === updated.id ? updated : t)
+      ),
+      error: (err) => console.error(err),
+    });
   }
 }
